@@ -4,7 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+<variable
+    name="mainActivityObject"
+    type="com.example.calculator.MainActivity" />
+        
+        <variable
+            name="answerResult"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,14 +18,93 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="124dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="148dp"
+            android:ems="10"
+            android:hint="Enter Number"
+            android:inputType="text"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/editText2"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="133dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="149dp"
+            android:ems="10"
+            android:hint="Enter Number"
+            android:inputType="text"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/editText1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="59dp"
+            android:text="+"
+            android:onClick="@{()-> mainActivityObject.buttonAddClicked(editText1.getText().toString,editText2.getText().toString)}"
+            app:layout_constraintEnd_toStartOf="@+id/buttonSub"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText1" />
+
+        <Button
+            android:id="@+id/buttonMultiple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="58dp"
+            android:text="x"
+            android:onClick="@{()-> mainActivityObject.buttonMultipleClicked(editText1.getText().toString,editText2.getText().toString)}"
+            app:layout_constraintEnd_toStartOf="@+id/buttonDivided"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonAdd" />
+
+        <Button
+            android:id="@+id/buttonSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="59dp"
+            android:text="-"
+            android:onClick="@{()-> mainActivityObject.buttonSubClicked(editText1.getText().toString,editText2.getText().toString)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonAdd"
+            app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+        <Button
+            android:id="@+id/buttonDivided"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="58dp"
+            android:text="/"
+            android:onClick="@{()-> mainActivityObject.buttonDividedClicked(editText1.getText().toString,editText2.getText().toString)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonMultiple"
+            app:layout_constraintTop_toBottomOf="@+id/buttonSub" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp"
+            android:hint="@{answerResult}"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonDivided" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

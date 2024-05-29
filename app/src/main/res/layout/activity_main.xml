@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-<variable
-    name="mainActivityObject"
-    type="com.example.calculator.MainActivity" />
-        
-        <variable
-            name="answerResult"
-            type="String" />
-    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -26,6 +17,7 @@
             android:ems="10"
             android:hint="Enter Number"
             android:inputType="text"
+            android:textAlignment="center"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/editText2"
             app:layout_constraintHorizontal_bias="0.5"
@@ -40,6 +32,7 @@
             android:ems="10"
             android:hint="Enter Number"
             android:inputType="text"
+            android:textAlignment="center"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -52,7 +45,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="59dp"
             android:text="+"
-            android:onClick="@{()-> mainActivityObject.buttonAddClicked(editText1.getText().toString,editText2.getText().toString)}"
             app:layout_constraintEnd_toStartOf="@+id/buttonSub"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +56,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="58dp"
             android:text="x"
-            android:onClick="@{()-> mainActivityObject.buttonMultipleClicked(editText1.getText().toString,editText2.getText().toString)}"
             app:layout_constraintEnd_toStartOf="@+id/buttonDivided"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +67,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="59dp"
             android:text="-"
-            android:onClick="@{()-> mainActivityObject.buttonSubClicked(editText1.getText().toString,editText2.getText().toString)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/buttonAdd"
@@ -88,7 +78,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="58dp"
             android:text="/"
-            android:onClick="@{()-> mainActivityObject.buttonDividedClicked(editText1.getText().toString,editText2.getText().toString)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/buttonMultiple"
@@ -96,15 +85,16 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="76dp"
-            android:hint="@{answerResult}"
+            android:layout_width="107dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="300dp"
+            android:hint="Result"
+            android:textAlignment="center"
             android:textSize="24sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonDivided" />
+            app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

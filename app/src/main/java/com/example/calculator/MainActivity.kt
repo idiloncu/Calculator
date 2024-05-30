@@ -1,6 +1,5 @@
 package com.example.calculator
 
-import com.example.calculator.viewmodel.CalculateViewModel
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -10,6 +9,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.example.calculator.R
 import com.example.calculator.databinding.ActivityMainBinding
+import com.example.calculator.viewmodel.CalculateViewModel
 
 class MainActivity : AppCompatActivity() {
 

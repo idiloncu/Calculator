@@ -9,46 +9,44 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.example.calculator.R
+import com.example.calculator.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: CalculateViewModel by viewModels()
+    private lateinit var binding:ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding= ActivityMainBinding.inflate(layoutInflater)
+        val view=binding.root
         setContentView(R.layout.activity_main)
 
-        val textView: TextView = findViewById(R.id.textView)
-        val editText1: EditText = findViewById(R.id.editText1)
-        val editText2: EditText = findViewById(R.id.editText2)
-        val buttonAdd: Button = findViewById(R.id.buttonAdd)
-        val buttonSub: Button = findViewById(R.id.buttonSub)
-        val buttonMultiple: Button = findViewById(R.id.buttonMultiple)
-        val buttonDivided: Button = findViewById(R.id.buttonDivided)
+        viewModel.result.observe(this, Observer {
+                result -> binding.textView.text = result
+        })
 
-        viewModel.result.observe(this, Observer { result -> textView.text = result })
-
-        buttonAdd.setOnClickListener {
-            val a = editText1.text.toString().toDoubleOrNull()
-            val b = editText2.text.toString().toDoubleOrNull()
+        binding.buttonAdd.setOnClickListener {
+            val a=binding.editText1.text.toString().toDoubleOrNull()
+            val b = binding.editText2.text.toString().toDoubleOrNull()
             if (a != null && b != null) {
-                viewModel.add(a, b)
+                binding.buttonAdd
             }
         }
-        buttonSub.setOnClickListener {
-            val a = editText1.text.toString().toDoubleOrNull()
-            val b = editText2.text.toString().toDoubleOrNull()
+        binding.buttonSub.setOnClickListener {
+            val a =binding.editText1.text.toString().toDoubleOrNull()
+            val b =binding.editText2.text.toString().toDoubleOrNull()
             if (a != null && b != null) {
                 viewModel.subtract(a, b)
             }
-            buttonMultiple.setOnClickListener {
-                val a = editText1.text.toString().toDoubleOrNull()
-                val b = editText2.text.toString().toDoubleOrNull()
+            binding.buttonMultiple.setOnClickListener {
+                val a = binding.editText1.text.toString().toDoubleOrNull()
+                val b = binding.editText2.text.toString().toDoubleOrNull()
                 if (a != null && b != null) {
                     viewModel.multiply(a, b)
                 }
-                buttonDivided.setOnClickListener {
-                    val a = editText1.text.toString().toDoubleOrNull()
-                    val b = editText2.text.toString().toDoubleOrNull()
+                binding.buttonDivided.setOnClickListener {
+                    val a = binding.editText1.text.toString().toDoubleOrNull()
+                    val b = binding.editText2.text.toString().toDoubleOrNull()
                     if (a != null && b != null) {
                         viewModel.divide(a, b)
                     }

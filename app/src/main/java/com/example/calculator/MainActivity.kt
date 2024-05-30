@@ -1,13 +1,9 @@
 package com.example.calculator
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.example.calculator.R
 import com.example.calculator.databinding.ActivityMainBinding
 import com.example.calculator.viewmodel.CalculateViewModel
 
@@ -19,17 +15,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
         val view=binding.root
-        setContentView(R.layout.activity_main)
+        setContentView(view)
 
         viewModel.result.observe(this, Observer {
-                result -> binding.textView.text = result
+                result -> binding.textView.text = result.toString()
         })
 
         binding.buttonAdd.setOnClickListener {
             val a=binding.editText1.text.toString().toDoubleOrNull()
             val b = binding.editText2.text.toString().toDoubleOrNull()
             if (a != null && b != null) {
-                binding.buttonAdd
+                viewModel.add(a,b)
             }
         }
         binding.buttonSub.setOnClickListener {
